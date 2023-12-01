@@ -16,6 +16,7 @@ import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from decouple import config
 
 
 # Quick-start development settings - unsuitable for production
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'django_heroku',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,7 @@ STATICFILES_DIRS =[
 LOGIN_URL = '/signin'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+import openai
+# Set your OpenAI API key
+openai.api_key = config('OPENAI_API_KEY')

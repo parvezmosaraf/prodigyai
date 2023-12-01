@@ -6,9 +6,10 @@ import concurrent.futures
 from itertools import repeat
 import re
 from django.contrib.auth.decorators import login_required
+from decouple import config
 
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = config('OPENAI_API_KEY')
 
 # def extract_text_from_pdf_bulk(cv_paths):
 #     texts = []
