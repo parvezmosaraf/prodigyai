@@ -139,6 +139,7 @@ LOGIN_URL = '/signin'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
 
-import openai
-# Set your OpenAI API key
-openai.api_key = config('OPENAI_API_KEY')
+from decouple import config
+
+# Your OpenAI API key
+api_key = config('OPENAI_API_KEY')
