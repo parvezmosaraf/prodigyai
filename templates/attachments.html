@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attachments</title>
+</head>
+<body>
+    <h2>Attachments Found:</h2>
+    {% if attachments %}
+        <ul>
+            {% for attachment in attachments %}
+                <li>{{ attachment }}</li>  <!-- Display attachment information here -->
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No attachments found.</p>
+    {% endif %}
+</body>
+</html>
+ 

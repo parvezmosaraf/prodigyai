@@ -1,0 +1,79 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+.bc-parvez {
+    display: none;
+}
+</style>
+<div class="row">
+    <style>
+        .search {
+            background-color: transparent;
+            padding: 0px;
+        }
+    </style>
+    <div class="col-7 search">
+        <div style="width: 100%; padding: 29px; overflow: scroll;">
+            <h5 style="color: white;"> Relevant CVs </h5>
+            <table>
+                {% if relevant_cvs %}
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Previous Job</th>
+                    <th>Location</th>
+                </tr>
+                {% for cv_data in relevant_cvs %}
+                {% if cv_data.extracted_details %}
+                <tr>
+                    <td>{{ cv_data.extracted_details.name }}</td>
+                    <td>{{ cv_data.extracted_details.email }}</td>
+                    <td>{{ cv_data.extracted_details.previous_job }}</td>
+                    <td>{{ cv_data.extracted_details.location }}</td>
+                </tr>
+                {% else %}
+                <p>No details found for this CV.</p>
+                {% endif %}
+                {% endfor %}
+
+                {% else %}
+                <p>No relevant CVs found.</p>
+                {% endif %}
+            </table>
+            <br>
+            <br>
+        </div>
+        <div style="width: 100%; padding: 29px; overflow: scroll;">
+            {% if irrelevant_cvs %}
+            <h5 style="color: white;"> Irrlevant CVs </h5>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Previous Job</th>
+                    <th>Location</th>
+                </tr>
+                {% for cv_data in irrelevant_cvs %}
+                {% if cv_data.extracted_details %}
+                <tr>
+                    <td>{{ cv_data.extracted_details.name }}</td>
+                    <td>{{ cv_data.extracted_details.email }}</td>
+                    <td>{{ cv_data.extracted_details.previous_job }}</td>
+                    <td>{{ cv_data.extracted_details.location }}</td>
+                </tr>
+                {% else %}
+                <p>No details found for this CV.</p>
+                {% endif %}
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No relevant CVs found.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-5">
+
+    </div>
+</div>
+{% endblock content %}
